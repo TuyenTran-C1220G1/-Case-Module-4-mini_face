@@ -2,7 +2,6 @@ package com.company.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
 
@@ -12,15 +11,12 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Enumerated(EnumType.STRING)
-    @NaturalId
-    @Column(length = 60)
-    private RoleName name;
+    private String name;
 
     public Role() {
     }
 
-    public Role(Long id, RoleName name) {
+    public Role(Long id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -33,11 +29,11 @@ public class Role {
         this.id = id;
     }
 
-    public RoleName getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(RoleName name) {
+    public void setName(String name) {
         this.name = name;
     }
 }

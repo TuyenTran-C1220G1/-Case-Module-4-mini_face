@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -9,12 +10,12 @@
 	<title>Pitnik Social Network Toolkit</title>
     <link rel="icon" href="images/fav.png" type="image/png" sizes="16x16"> 
     
-    <link rel="stylesheet" href="css/main.min.css">
-	<link rel="stylesheet" href="css/weather-icon.css">
-	<link rel="stylesheet" href="css/weather-icons.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/color.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="/css/main.min.css">
+	<link rel="stylesheet" href="/css/weather-icon.css">
+	<link rel="stylesheet" href="/css/weather-icons.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/color.css">
+    <link rel="stylesheet" href="/css/responsive.css">
 
 </head>
 <body>
@@ -50,10 +51,12 @@
                                     <i class="fa fa-key"></i>Sign Up
                                     <span>Sign Up now and meet the awesome friends around the world.</span>
                                 </div>
-                                <form class="we-form" method="post">
-                                    <input type="text" placeholder="Email">
-                                    <input type="password" placeholder="Password">
-                                    <input type="text" placeholder="+1234-567-987">
+                                <form class="we-form" action="/register" method="post" th:object="${user}">
+                                    <input type="text" placeholder="Email" th:field="*{email}">
+                                    <input type="text" placeholder="UserName" th:field="*{username}">
+                                    <input type="text" placeholder="Name" th:field="*{name}">
+                                    <input type="password" placeholder="Password" th:field="*{password}">
+
                                     <input type="checkbox"><label>Send code to Mobile</label>
                                     <button type="submit" data-ripple="">Register</button>
                                     <a class="forgot underline" href="#" title="">forgot password?</a>

@@ -10,12 +10,12 @@
 	<title>Pitnik Social Network Toolkit</title>
     <link rel="icon" href="images/fav.png" type="image/png" sizes="16x16"> 
     
-    <link rel="stylesheet" href="css/main.min.css">
-	<link rel="stylesheet" href="css/weather-icon.css">
-	<link rel="stylesheet" href="css/weather-icons.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/color.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="/css/main.min.css">
+	<link rel="stylesheet" href="/css/weather-icon.css">
+	<link rel="stylesheet" href="/css/weather-icons.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/color.css">
+    <link rel="stylesheet" href="/css/responsive.css">
 
 </head>
 <body>
@@ -77,10 +77,10 @@
                                     <i class="fa fa-key"></i>login
                                     <span>sign in now and meet the awesome Friends around the world.</span>
                                 </div>
-                                <form class="we-form" method="post">
-                                    <input type="text" placeholder="Email">
-                                    <input type="password" placeholder="Password">
-                                    <input type="checkbox"><label>remember me</label>
+                                <form class="we-form" name='f' th:action="@{/j_spring_security_check}" method="post">
+                                    <input type="text" name="username" placeholder="Username">
+                                    <input type="password" name="password" placeholder="Password">
+                                    <input type="checkbox" name="remember-me"><label>remember me</label>
                                     <button type="submit" data-ripple="">sign in</button>
                                     <a class="forgot underline" href="#" title="">forgot password?</a>
                                 </form>
@@ -88,7 +88,7 @@
                                 <a class="with-smedia twitter" href="#" title="" data-ripple=""><i class="fa fa-twitter"></i></a>
 								<a class="with-smedia instagram" href="#" title="" data-ripple=""><i class="fa fa-instagram"></i></a>
 								<a class="with-smedia google" href="#" title="" data-ripple=""><i class="fa fa-google-plus"></i></a>
-                                <span>don't have an account? <a class="we-account underline" href="#" title="">register now</a></span>
+                                <span>don't have an account? <a class="we-account underline" href="/register" title="">register now</a></span>
                             </div>
                         </div>
                         

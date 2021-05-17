@@ -8,9 +8,9 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+
 
 @Entity
 @Table(name = "user", uniqueConstraints = {
@@ -38,17 +38,17 @@ public class User {
     @Size(max = 50)
     @Email
     private String email;
-    
+
     @NotBlank
     @Size(min = 6, max = 100)
     private String password;
 
     @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles = new HashSet<>();
+    private List<Role> roles = new ArrayList<>();
 
     @Lob
     private String avatar;
@@ -59,7 +59,7 @@ public class User {
     public User(String username, String password, List<GrantedAuthority> authorities) {
     }
 
-    public User(Long id, String name, String username, String email, String password, Set<Role> roles, String avatar, String background) {
+    public User(Long id, String name, String username, String email, String password, List<Role> roles, String avatar, String background) {
         this.id = id;
         this.name = name;
         this.username = username;
@@ -71,7 +71,6 @@ public class User {
     }
 
     public User() {
-
     }
 
     public Long getId() {
@@ -114,11 +113,11 @@ public class User {
         this.password = password;
     }
 
-    public Set<Role> getRoles() {
+    public List<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
 

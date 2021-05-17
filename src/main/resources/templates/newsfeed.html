@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -9,11 +10,11 @@
 	<title>Pitnik Social Network Toolkit</title>
     <link rel="icon" href="images/fav.png" type="image/png" sizes="16x16"> 
     
-    <link rel="stylesheet" href="css/main.min.css">
-	<link rel="stylesheet" href="css/weather-icons.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/color.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="/css/main.min.css">
+	<link rel="stylesheet" href="/css/weather-icons.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/color.css">
+    <link rel="stylesheet" href="/css/responsive.css">
 
 </head>
 <body>
@@ -48,7 +49,7 @@
 		</div>
 		<div class="mh-head second">
 			<form class="mh-form">
-				<input placeholder="search" />
+				<input placeholder="search"/>
 				<a href="#/" class="fa fa-search"></a>
 			</form>
 		</div>
@@ -398,8 +399,8 @@
 
 			</ul>
 			<div class="user-img">
-				<h5>Jack Carter</h5>
-				<img src="images/resources/admin.jpg" alt="">
+				<h5 th:utext="${user.username}">Jack Carter</h5>
+				<img th:src="@{${'/imageP/'+user.getAvatar()}}" alt="" height="30px" width="30px">
 				<span class="status f-online"></span>
 				<div class="user-setting">
 					<span class="seting-title">Chat setting <a href="#" title="">see all</a></span>
@@ -534,7 +535,7 @@
 									<span class="create-post">Create post</span>
 									<div class="new-postbox">
 										<figure>
-											<img src="images/resources/admin.jpg" alt="">
+											<img th:src="@{${'/imageP/'+user.getAvatar()}}" alt="" height="30px" width="30px">
 										</figure>
 										<div class="newpst-input">
 											<form method="post">
